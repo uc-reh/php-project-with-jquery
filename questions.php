@@ -33,13 +33,16 @@ $arr = json_decode($question, true);
     </nav>
 
 
+    <div class="list-group w-25" style="display:none; float: left;">
+        <!-- <p class="list-group-item list-group-item-action li-1"></p> -->
+    </div>
     <div class="container">
         <div class="questions-n-ans my-4">
             <p class="question">
             </p>
-            <div class="fixed-bottom bg-light p-3 border border-dark">
-                <div class="container d-flex">
-                    <p class="time col-1">1:20</p>
+            <div class="fixed-bottom bg-light p-3 border border-dark" style="z-index: -1;">
+                <div class="d-flex justify-content-end">
+                    <p class="time">1:20</p>
                     <button class="list-bt btn btn-secondary col-1 mx-5">LIST</button>
                     <button class="prev btn btn-secondary col-1 mx-5">PREV</button>
                     <p class="data col-1"></p>
@@ -70,11 +73,24 @@ $arr = json_decode($question, true);
             </div>
         </form>
     </div>
-    <div class="list-group" style="display:none; float: left;">
-        <a href="#" class="list-group-item list-group-item-action li-1">Cras justo odio</a>
-    </div>
-    <div class="new"></div>
 
+    <div class="modal" tabindex="-1">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">Are you sure?</h5>
+                    <button type="button" class="btn-close modclose"></button>
+                </div>
+                <div class="modal-body">
+                    <p>You want to end the test</p>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="modclose btn btn-secondary">Cancel</button>
+                    <button type="button" class="endtest btn btn-danger">End</button>
+                </div>
+            </div>
+        </div>
+    </div>
 
 
 

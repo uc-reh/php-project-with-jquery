@@ -8,21 +8,18 @@ $(document).ready(function () {
       var str = JSON.parse(data[0]["content_text"]);
       $(".question").text(str.question);
       $(".data").text(" " + 1 + " of " + data.length);
-       //   console.log(data.length);
-        for (i = 0; i < 4; i++) {
+      for (i = 0; i < 4; i++) {
         $(".answer" + i).text(str.answers[i].answer);
       }
       $(".next").click(function () {
         k = k + 1;
-        // console.log(k);
         if (k > data.length - 1) {
-          // alert("Questions khatam!!");
           k = data.length - 1;
         } else {
           $(".question").text(JSON.parse(data[k]["content_text"]).question);
           console.log(k);
           $(".data").text(" " + (k + 1) + " of " + data.length);
-            for (i = 0; i < 4; i++) {
+          for (i = 0; i < 4; i++) {
             $(".answer" + i).text(
               JSON.parse(data[k]["content_text"]).answers[i].answer
             );
@@ -34,11 +31,7 @@ $(document).ready(function () {
         if (k < 0) {
           k = 0;
         }
-        console.log(k);
-
-        if (k < 0) {
-          alert("Questions khatam!!");
-        } else {
+         else{
           $(".question").text(JSON.parse(data[k]["content_text"]).question);
           $(".data").text(" " + (k + 1) + " of " + data.length);
 
@@ -49,9 +42,35 @@ $(document).ready(function () {
           }
         }
       });
-    }
-  });
+        
+      for (n = 0; n < data.length; n++) {
+        $(".list-group").append(
+          '<p class="list-group-item list-group-item-action li-1"><b>Ques :  ' +
+            (n + 1) +
+            " </b>" +
+            data[n]["snippet"] +
+            "</p>"
+        );
+      }
+      $(".list-group-item").append(
+        '<span class="badge rounded-pill text-bg-warning">Warning</span>'
+      );
+    } // success: function (data) ends here
+  }); //.ajax() ends here
+    
+    
+    
   $(".list-bt").click(function () {
     $(".list-group").toggle();
   });
+  
+    $('.end').click(function () {
+        $('.modal').show();
+    });
+    
+    $(".modclose").click(function () {
+        $('.modal').hide();
+    });
+    
+    
 });
