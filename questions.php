@@ -33,12 +33,12 @@ $arr = json_decode($question, true);
     </nav>
 
 
-    <div class="list-group w-25" style="display:none; float: left;">
+    <div class="list-group w-25" style="display:none; float: left; background-color: white;">
         <!-- <p class="list-group-item list-group-item-action li-1"></p> -->
     </div>
     <div class="container">
         <div class="questions-n-ans my-4">
-            <p class="question">
+            <p class="question" style="z-index: -1;">
             </p>
             <div class="fixed-bottom bg-light p-3 border border-dark" style="z-index: -1;">
                 <div class="d-flex justify-content-end">
@@ -46,18 +46,18 @@ $arr = json_decode($question, true);
                     <button class="list-bt btn btn-secondary col-1 mx-5">LIST</button>
                     <button class="prev btn btn-secondary col-1 mx-5">PREV</button>
                     <p class="data col-1"></p>
-                    <button class="next btn btn-secondary col-1 mx-5">NEXT</button>
-                    <button class="end btn btn-secondary col-1 mx-5">END TEST</button>
+                    <button class="next btn btn-secondary col-1 mx-5">Next</button>
+                    <button class="end btn btn-secondary col-1 mx-5">End Test</button>
                 </div>
             </div>
 
 
 
         </div>
-        <form>
-            <div class="form-check">
-                <input type="radio" class="form-check-input" id="radio1" name="optradio" value="option1">
-                <label class="answer0 form-check-label" for="radio1"></label>
+        <form class="options">
+            <!-- <div class="form-check">
+                <input type="answer radio" class="form-check-input" id="radio1" name="optradio" value="option1">
+                <label class="answer form-check-label" for="radio1"></label>
             </div>
             <div class="form-check">
                 <input type="radio" class="form-check-input" id="radio2" name="optradio" value="option2">
@@ -70,7 +70,7 @@ $arr = json_decode($question, true);
             <div class="form-check">
                 <input type="radio" class="form-check-input" id="radio2" name="optradio" value="option2">
                 <label class="answer3 form-check-label" for="radio2"></label>
-            </div>
+            </div> -->
         </form>
     </div>
 
@@ -85,6 +85,7 @@ $arr = json_decode($question, true);
                     <p>You want to end the test</p>
                 </div>
                 <div class="modal-footer">
+                    <button type="button" class="itmlist btn btn-warning">Go to item list</button>
                     <button type="button" class="modclose btn btn-secondary">Cancel</button>
                     <button type="button" class="endtest btn btn-danger">End</button>
                 </div>
