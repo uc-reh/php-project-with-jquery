@@ -54,7 +54,18 @@ $(document).ready(function () {
           if (k == data.length - 1) {
             $(".next").prop("disabled", true);
           }
-        }
+          }
+          $.post(
+            "testingdata.php",
+            {
+              name: "Abdul",
+              college: "Mangalmay",
+              question: $(".question").text(),
+            },
+            function (data) {
+              console.log(data);
+            }
+          );
       });
       $(".prev").click(function () {
         //Everything on pressing prev
@@ -134,8 +145,22 @@ $(document).ready(function () {
             }
         }
       });
-    }, // success: function (data) ends here
+        $.post(
+          "testingdata.php",
+          {
+            name: "Abdul",
+            college: "Mangalmay",
+            question: $(".question").text(),
+          },
+          function (data) {
+            console.log(data);
+          }
+        );
+        
+      }// success: function (data) ends here
   }); //.ajax() ends here
+    
+     
 
   $(".list-bt").click(function () {
     $(".list-group").toggle();
@@ -149,12 +174,15 @@ $(document).ready(function () {
     $(".modal").hide();
   });
   //Saving the session
-  //   function setValSession()
-  //   {
-  //       localStorage.setItem("value","hell0");
-  //   }
-  //   $("#radio1").click(function () {
-  //     //   setValSession();
-  //        localStorage.setItem("value", "hell0");
-  //   });
+    function setValSession()
+    {
+        // localStorage.setItem("value", "hell0");
+        sessionStorage.setItem("val", "hello");
+    }
+    $(".end").click(function () {
+         sessStorage.setItem("val", "hell0");
+    });
+       
 });
+
+

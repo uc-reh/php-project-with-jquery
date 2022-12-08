@@ -2,9 +2,6 @@
 $json_string = 'question.json';
 $question = file_get_contents($json_string);
 $arr = json_decode($question, true);
-// echo '<pre>';
-// print_r($arr);
-// echo '</pre>';
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -38,7 +35,7 @@ $arr = json_decode($question, true);
     </div>
     <div class="container">
         <div class="questions-n-ans my-4">
-            <p class="question" style="z-index: -1;">
+            <p class="question" style="z-index: -1;" id="quest">
             </p>
             <div class="fixed-bottom bg-light p-3 border border-dark" style="z-index: -1;">
                 <div class="d-flex justify-content-end">
@@ -150,6 +147,7 @@ $arr = json_decode($question, true);
                 });
         });
     </script> -->
+ 
 </body>
 
 </html>
