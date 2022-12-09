@@ -39,7 +39,7 @@ $arr = json_decode($question, true);
             </p>
             <div class="fixed-bottom bg-light p-3 border border-dark" style="z-index: -1;">
                 <div class="d-flex justify-content-end">
-                    <p class="time">1:20</p>
+                    <p id="time"></p>
                     <button class="list-bt btn btn-secondary col-1 mx-5">LIST</button>
                     <button class="prev btn btn-secondary col-1 mx-5">PREV</button>
                     <p class="data col-1"></p>
@@ -69,8 +69,6 @@ $arr = json_decode($question, true);
                 <label class="answer3 form-check-label" for="radio2"></label>
             </div> -->
         </form>
-    </div>
-
     <div class="modal" tabindex="-1">
         <div class="modal-dialog">
             <div class="modal-content">
