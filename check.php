@@ -10,7 +10,7 @@ $tempArray = json_decode($inp);
 // print_r($tempArray[0]->content_text);
 // echo '</pre>';
 
-$newarr = json_decode($tempArray[0]->content_text);
+$newarr = json_decode($tempArray[1]->content_text);
 echo '<pre>';
 // print_r($newarr);
 echo '</pre>';
