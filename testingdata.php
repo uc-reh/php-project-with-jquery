@@ -1,15 +1,29 @@
 <?php
 session_start();
+$file = file_get_contents("hi.json");
+
+$oldarr = json_decode($file, true);
 // print_r($_POST);
 
-$question = $_POST['question'];
-$answer = $_POST['answer'];
-$newans = strip_tags($answer);
-$newques = $_SESSION['question'] = $question;
-$_SESSION['answer'] = $newans;
+$_SESSION['question'] = $_POST['question'];
+$_SESSION['answer'] = $_POST['answer'];
+$finalans = strip_tags($_SESSION['answer']);
+$newques = $_SESSION['question'];
+$newans  = $finalans;
 
 
+$array = array(array('question'=>$newques, 'answer'=>$newans));
+// $temparray = $array;
+if (empty($oldarr)) {
+    $_SESSION= $array;
+}
 
+else if(!empty($oldarr)){
+    $_SESSION = array_merge($array, $oldarr);
+}
+// $temparray = 0;
+// $_SESSION['question'];
+// $_SESSION['answer'];
 //$_SESSION = array_merge($_SESSION, $ans);
 
 // print_r($_SESSION);
