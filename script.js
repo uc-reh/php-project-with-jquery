@@ -81,7 +81,7 @@ $(document).ready(function () {
                           "testingdata.php",
                           {
                               question: k,
-                              answer: JSON.parse(data[k]["content_text"]).answers[$(this).attr("value")].answer, //$(this).attr("value") 
+                              answer: $(this).val(), //$(this).attr("value") 
                           },
                           function (data) {
                               console.log(data);
@@ -138,7 +138,7 @@ $(document).ready(function () {
                           "testingdata.php",
                           {
                               question: k,
-                              answer: JSON.parse(data[k]["content_text"]).answers[$(this).attr("value")].answer,
+                            answer: $(this).val(),//JSON.parse(data[k]["content_text"]).answers[$(this).attr("value")].answer,
                                   //$(this).attr("value") 
                           },
                           function (data) {
@@ -218,9 +218,10 @@ $(document).ready(function () {
                     "testingdata.php",
                     {
                       question: k,
-                      answer: JSON.parse(data[k]["content_text"]).answers[
-                        $(this).attr("value")
-                      ].answer,
+                      answer: $(this).val(),
+                      // answer: JSON.parse(data[k]["content_text"]).answers[
+                      //   $(this).attr("value")
+                      // ].answer,
                       /*$(this).attr(
                                   "value"
                               )*/
@@ -242,14 +243,14 @@ $(document).ready(function () {
 
           $(".form-check-input").click(function () {
               $.post(
-                  "testingdata.php",
-                  {
-                      question: k,
-                      answer: JSON.parse(data[k]["content_text"]).answers[$(this).attr("value")].answer,//$(this).attr("value"), 
-                  },
-                  function (data) {
-                      console.log(data);
-                  }
+                "testingdata.php",
+                {
+                  question: k,
+                  answer: $(this).val(), //$(this).attr("value"),
+                },
+                function (data) {
+                  console.log(data);
+                }
               ); 
           });
   
