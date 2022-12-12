@@ -163,7 +163,7 @@ $(document).ready(function () {
           //Prinitng the list (sidebar)
           for (n = 0; n < data.length; n++) {
               $(".list-group").append(
-                  '<p class="list-group-item list-group-item-action" style="cursor:pointer; margin-top:-19px;" id="' +
+                  '<p class="list-group-item snip list-group-item-action" style="cursor:pointer; margin-top:-10px; z-index: 1;" id="' +
                   n +
                   'li"><b>Ques :  ' +
                   (n + 1) +
@@ -172,8 +172,8 @@ $(document).ready(function () {
                   "</p>"
               );
           }
-          $(".list-group-item").append(
-              '<span class="badge rounded-pill text-bg-warning">Warning</span>'
+          $(".snip").append(
+              '<br><span class="badge rounded-pill text-bg-warning">Unattempted</span>'
           );
 
 

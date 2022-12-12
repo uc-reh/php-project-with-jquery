@@ -30,7 +30,14 @@ $arr = json_decode($question, true);
     </nav>
 
 
-    <div class="list-group w-25" style="display:none; float: left; background-color: white;">
+    <div class="list-group w-25" style="display:none; float: left; background: white; z-index: 1; position:relative;">
+    <div class="d-flex" style="top: 1px; position: relative; z-index: 2; cursor:pointer;">
+        <p class="list-group-item list-group-item-action" style="cursor:pointer;margin-top: 4px;z-index: 1;" id="0li">
+        <span class="badge rounded-pill text-bg-success w-25" style="background-color: white;">Attempted</span>
+        <span class="badge rounded-pill text-bg-warning w-25" style="background-color: white;">Unattempted</span>
+            </p>
+    </div>
+   
         <!-- <p class="list-group-item list-group-item-action li-1"></p> -->
     </div>
     <div class="container">
