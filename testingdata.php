@@ -5,22 +5,32 @@ $file = file_get_contents("hi.json");
 $oldarr = json_decode($file, true);
 // print_r($_POST);
 
-$_SESSION['question'] = $_POST['question'];
-$_SESSION['answer'] = $_POST['answer'];
-$finalans = strip_tags($_SESSION['answer']);
-$newques = $_SESSION['question'];
-$newans  = $finalans;
+// question: index
+// answer: user answer
+if (isset($_SESSION[$_POST['question']])) {
+    $_SESSION[$_POST['question']]['answer'] = $_POST['answer'];
+} else {
+    $temp = array();
+    $temp[$_POST['question']]['answer'] = $_POST['answer'];
+    array_push($_SESSION, $temp);
+}
+
+// $_SESSION['question'] = $_POST['question'];
+// $_SESSION['answer'] = $_POST['answer'];
+// $finalans = strip_tags($_SESSION['answer']);
+// $newques = $_SESSION['question'];
+// $newans  = $finalans;
 
 
-$array = array(array('question'=>$newques, 'answer'=>$newans));
+// $array = array(array('question'=>$newques, 'answer'=>$newans));
 // $temparray = $array;
-if (empty($oldarr)) {
-    $_SESSION= $array;
-}
+// if (empty($oldarr)) {
+//     $_SESSION= $array;
+// }
 
-else if(!empty($oldarr)){
-    $_SESSION = array_merge($array, $oldarr);
-}
+// else if(!empty($oldarr)){
+//     $_SESSION = array_merge($array, $oldarr);
+// }
 // $temparray = 0;
 // $_SESSION['question'];
 // $_SESSION['answer'];
