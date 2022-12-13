@@ -77,7 +77,7 @@ $arr = json_decode($question, true);
             </div> -->
         </form>
     <div class="modal" tabindex="-1">
-        <div class="modal-dialog">
+        <div class="modal-dialog modal-dialog-centered">
             <div class="modal-content">
                 <div class="modal-header">
                     <h5 class="modal-title">Are you sure?</h5>
@@ -89,7 +89,8 @@ $arr = json_decode($question, true);
                 <div class="modal-footer">
                     <button type="button" class="itmlist btn btn-warning">Go to item list</button>
                     <button type="button" class="modclose btn btn-secondary">Cancel</button>
-                    <button type="button" class="endtest btn btn-danger">End</button>
+                    <a href="result.html">
+                    <button type="button" class="endtest btn btn-danger">End</button></a>
                 </div>
             </div>
         </div>
