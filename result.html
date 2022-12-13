@@ -14,6 +14,11 @@
 
     <link rel="stylesheet"
         href="https://www.jigyaasa.info/layout/themes/bootstrap4/ux/css/css_overwrite.min.css?20221117" type="text/css">
+        <style>
+            td{
+                cursor: pointer;
+            }
+        </style>
 </head>
 
 <body>
@@ -59,13 +64,12 @@
         </table>
     </div>
 
-
 </body>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
-<script src="script.js"></script>
+<script src="review.js"></script>
 <script>
     $(document).ready(function () {
-
+          $('.reviewpg').hide();
         $.ajax({
             url: "http://localhost/PHP_PROJECT/question.json",
             type: "POST",
@@ -84,7 +88,7 @@
                     checkres = sessionStorage.getItem("result" + k);
                     // var strloop = JSON.parse(data[k]["content_text"]);
 
-                    $("tbody").append('<tr><th scope="row" class="snippet">' + (k + 1) + '</th><td>' + data[k]["snippet"] + '</td><td class="d-flex justify-content-between"><p class="border-dark ' + k + 'var0 corr' +
+                    $("tbody").append('<tr><th scope="row" class="snippet">' + (k + 1) + '</th><td class="snippet-an" id="s'+k+'">' + data[k]["snippet"] + '</td><td class="d-flex justify-content-between"><p class="border-dark ' + k + 'var0 corr' +
                         k + 'li' + 0 +
                         '">A</p><p class="border-dark ' + k + 'var1 corr' +
                         k + 'li' + 1 +
@@ -94,6 +98,7 @@
                         k + 'li' + 3 +
                         '">D</p></td > <td class="checkat' + k + '"></td></tr >'
                     );
+                   
                     if (checkat !== null) {
                         $(".checkat" + k).append("attempted");
                     } else {
@@ -138,8 +143,14 @@
                     $('.result').text(
                        (parseFloat(count / (data.length) * (100)).toFixed(2)+"%")
                     );
-                }
+                      
+                    $('.snippet-an').click(function () {
+                       
+                        window.location.href = 'review.html';
 
+                    });
+                }
+              
             }, // success: function (data) ends here
         }); //.ajax() ends here
     });

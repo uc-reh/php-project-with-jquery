@@ -18,9 +18,9 @@ $arr = json_decode($question, true);
     /* .start-btn {
             margin-top: 239px;
         } */
-        .options {
+    .options {
         background-color: gainsboro;
-       
+
         padding: 20px;
     }
 </style>
@@ -35,14 +35,25 @@ $arr = json_decode($question, true);
     </nav>
 
 
-    <div class="list-group w-25" style="display:none; float: left; background: white; z-index: 1; position:relative;">
-    <div class="d-flex" style="top: 1px; position: relative; z-index: 2; cursor:pointer;">
-        <p class="list-group-item list-group-item-action" style="cursor:pointer;margin-top: 4px;z-index: 1;" id="0li">
-        <span class="badge rounded-pill text-bg-success w-25" style="background-color: white;">Attempted</span>
-        <span class="badge rounded-pill text-bg-warning w-25" style="background-color: white;">Unattempted</span>
+    <div class="list-group w-25" style="display:none; float: left; background: white; z-index: 1; position:relative; float: left;
+    background: white;
+    z-index: 1;
+    position: relative;
+    height: 610px;
+    width: 215px;
+    overflow: auto;
+    float: left;
+    position: relative;
+    margin-left: -5px;">
+        <div class="d-flex" style="top: 1px; position: relative; z-index: 2; cursor:pointer;">
+            <p class="list-group-item list-group-item-action" style="cursor:pointer;margin-top: 4px;z-index: 1;"
+                id="0li">
+                <span class="badge rounded-pill text-bg-success w-25" style="background-color: white;">Attempted</span>
+                <span class="badge rounded-pill text-bg-warning w-25"
+                    style="background-color: white;">Unattempted</span>
             </p>
-    </div>
-   
+        </div>
+
         <!-- <p class="list-group-item list-group-item-action li-1"></p> -->
     </div>
     <div class="container">
@@ -63,7 +74,7 @@ $arr = json_decode($question, true);
 
 
         </div>
-    
+
         <form class="options">
             <!-- <div class="form-check">
                 <input type="answer radio" class="form-check-input" id="radio1" name="optradio" value="option1">
@@ -82,31 +93,31 @@ $arr = json_decode($question, true);
                 <label class="answer3 form-check-label" for="radio2"></label>
             </div> -->
         </form>
-    <div class="modal" tabindex="-1">
-        <div class="modal-dialog modal-dialog-centered">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title">Are you sure?</h5>
-                    <button type="button" class="btn-close modclose"></button>
-                </div>
-                <div class="modal-body">
-                    <p>You want to end the test</p>
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="itmlist btn btn-warning">Go to item list</button>
-                    <button type="button" class="modclose btn btn-secondary">Cancel</button>
-                    <a href="result.html">
-                    <button type="button" class="endtest btn btn-danger">End</button></a>
+        <div class="modal" tabindex="-1">
+            <div class="modal-dialog modal-dialog-centered">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title">Are you sure?</h5>
+                        <button type="button" class="btn-close modclose"></button>
+                    </div>
+                    <div class="modal-body">
+                        <p>You want to end the test</p>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="itmlist btn btn-warning">Go to item list</button>
+                        <button type="button" class="modclose btn btn-secondary">Cancel</button>
+                        <a href="result.html">
+                            <button type="button" class="endtest btn btn-danger">End</button></a>
+                    </div>
                 </div>
             </div>
         </div>
-    </div>
 
 
 
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
-    <script src="script.js"></script>
-    <!-- <script>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
+        <script src="script.js"></script>
+        <!-- <script>
         $(document).ready(function () {
             //Jquery here...
             var i = 1;
@@ -159,7 +170,7 @@ $arr = json_decode($question, true);
                 });
         });
     </script> -->
- 
+
 </body>
 
 </html>

@@ -1,5 +1,6 @@
 $(document).ready(function () {
   //Jquery here...
+ 
   var k = 0;
   $.ajax({
     url: "http://localhost/PHP_PROJECT/question.json",
@@ -40,7 +41,9 @@ $(document).ready(function () {
       //for result page
   
       
-      
+       $('.conatiner').click(function () {
+         $(".list-group").css("display","none");
+       });
 
         
       
@@ -264,9 +267,26 @@ $(document).ready(function () {
     }, // success: function (data) ends here
   }); //.ajax() ends here
 
-  $(".list-bt").click(function () {
-    $(".list-group").toggle();
-  });
+  
+  if(($(".list-group").css("display")=="none")){
+    $(".list-bt").click(function () {
+      $(".list-group").toggle();
+    });
+  }
+  if ($(".list-group").css("float") == "left") {
+    $(document).not('.list-bt').click(function () {
+      $(".list-group").hide();
+    });
+  }
+    
+    // if ($(".list-group").css("display") == "none") {
+    //   $(document).click(function () {
+    //     $(".list-group").hide();
+    //   }); 
+    // }
+
+ 
+  
   $(".itmlist").click(function () {
     $(".list-group").toggle();
   });
@@ -295,7 +315,7 @@ function startTimer(duration, display) {
     seconds = seconds < 10 ? "0" + seconds : seconds;
     display.textContent = minutes + ":" + seconds;
     if (diff <= 0) {
-      start = Date.now() + 1000;
+      window.location.href = "result.html";
     }
   }
   timer();
@@ -303,7 +323,12 @@ function startTimer(duration, display) {
 }
 
 window.onload = function () {
-  var tenMinutes = 60 * 10,
+  var tenMinutes = 60 * 2,
     display = document.querySelector("#time");
   startTimer(tenMinutes, display);
+  // if (display == '00:00')
+  // {
+  //                       
+    
+  //   }
 };

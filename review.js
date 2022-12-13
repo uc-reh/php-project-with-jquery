@@ -246,7 +246,7 @@ $(document).ready(function () {
             .removeClass("text-bg-warning");
         }
       }
-
+       
       //This is iterating the list items
       $(".list-group-item").click(function () {
           $(".options").empty();
