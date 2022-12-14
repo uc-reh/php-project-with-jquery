@@ -3,7 +3,7 @@ $(document).ready(function () {
  
   var k = 0;
   $.ajax({
-    url: "http://localhost/PHP_PROJECT/question.json",
+    url: "http://localhost/php-project-with-jquery/question.json",
     type: "POST",
     success: function (data) {
       var str = JSON.parse(data[0]["content_text"]);
