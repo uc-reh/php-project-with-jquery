@@ -264,20 +264,21 @@ $(document).ready(function () {
           }
         );
       });
+      $(".snip").click(function () {
+      $(".list-group").toggle();
+         
+       });
+
     }, // success: function (data) ends here
   }); //.ajax() ends here
 
   
-  if(($(".list-group").css("display")=="none")){
     $(".list-bt").click(function () {
       $(".list-group").toggle();
     });
-  }
-  if ($(".list-group").css("float") == "left") {
-    $(document).not('.list-bt').click(function () {
-      $(".list-group").hide();
-    });
-  }
+  
+   
+ 
     
     // if ($(".list-group").css("display") == "none") {
     //   $(document).click(function () {

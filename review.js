@@ -344,6 +344,9 @@ $(document).ready(function () {
           }
         );
       });
+             $(".snip").click(function () {
+               $(".list-group").toggle();
+             });
     }, // success: function (data) ends here
   }); //.ajax() ends here
 
