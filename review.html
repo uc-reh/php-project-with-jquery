@@ -13,24 +13,25 @@
     /* .start-btn {
             margin-top: 239px;
         } */
+    
     .options {
         background-color: gainsboro;
-       
         padding: 20px;
     }
+    
     seq:before {
-            content: attr(no);
-        }
+        content: attr(no);
+    }
 </style>
 </head>
 
 <body>
-    <nav class="navbar bg-light border border-dark ">
-        <a href="#" class="col-1 col-xs-4 navbar-brand"> <img
-                src="https://www.ucertify.com/layout/themes/bootstrap4/images/logo/ucertify_logo.png"
-                alt="uCertify Logo"></a>
-        <h1 class=" col-xs-4 navbar-nav mx-auto">uCertify Prep Test</h1>
-    </nav>
+    <div class="position">
+        <nav class="navbar bg-white border border-dark">
+            <a href="#" class="col-1 col-xs-4 navbar-brand"> <img src="https://www.ucertify.com/layout/themes/bootstrap4/images/logo/ucertify_logo.png" alt="uCertify Logo"></a>
+            <h1 class=" col-xs-4 navbar-nav mx-auto">uCertify Prep Test</h1>
+        </nav>
+    </div>
 
 
     <div class="list-group w-25" style="display:none; float: left; background: white; z-index: 1; position:relative; background: white;
@@ -42,11 +43,10 @@
     position: relative;
     margin-left: -5px;">
         <div class="d-flex" style="top: 1px; position: relative; z-index: 2; cursor:pointer;">
-            <p class="list-group-item list-group-item-action" style="cursor:pointer;margin-top: 4px;z-index: 1;"
-                id="0li">
-                <span class="badge rounded-pill text-bg-success w-25" style="background-color: white;">Attempted</span>
-                <span class="badge rounded-pill text-bg-warning w-25"
-                    style="background-color: white;">Unattempted</span>
+            <p class="list-group-item list-group-item-action" style="cursor:pointer;margin-top: 4px;z-index: 1;" id="0li">
+                <span class="badge rounded-pill at-b text-bg-success w-25" style="background-color: white;">Attempted</span>
+                <span class="badge rounded-pill ut-b  text-bg-warning w-25" style="background-color: white;">Unattempted</span>
+                <span class="badge rounded-pill all-b text-bg-primary w-25" style="background-color: white;">All</span>
             </p>
         </div>
 
@@ -56,40 +56,39 @@
         <div class="questions-n-ans my-4">
             <p class="question" style="z-index: -1;" id="quest">
             </p>
-            <div class="fixed-bottom bg-light p-3 border border-dark" style="z-index: -1;">
-                <div class="d-flex justify-content-end">
-                    <p id="time"></p>
-                    <button class="list-bt btn btn-secondary col-1 mx-5">LIST</button>
-                    <button class="prev btn btn-secondary col-1 mx-5">PREV</button>
-                    <p class="data col-1"></p>
-                    <button class="next btn btn-secondary col-1 mx-5">Next</button>
-                    <a href="result.html">
-                        <button class="goback btn btn-secondary mx-5">GO Back</button>
-                    </a>
-                </div>
-            </div>
+        </div>
+    </div>
+
+
+    <form class="container options position">
+
+    </form>
+
+    <div class="conatiner my-4 position">
+        <div class="container checkit"></div>
+        <p class="container snippet bg-success text-light"></p>
+
+    </div>
 
 
 
+    <div class="fixed-bottom bg-light p-3 border border-dark" style="z-index:10;">
+        <div class="d-flex justify-content-end">
+            <p id="time"></p>
+            <button class="list-bt btn btn-secondary col-1 mx-5" style="z-index:10;">LIST</button>
+            <button class="prev btn btn-secondary col-1 mx-5">PREV</button>
+            <p class="data col-1"></p>
+            <button class="next btn btn-secondary col-1 mx-5">Next</button>
+            <a href="result.html">
+                <button class="goback btn btn-secondary mx-5">GO Back</button>
+            </a>
         </div>
 
+    </div>
 
-        <form class="options">
-
-        </form>
-
-        <div class="conatiner my-4">
-            <div class="checkit"></div>
-            <p class="snippet bg-success text-light"></p>
-
-        </div>
-
-
-
-
-        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
-        <script src="review.js"></script>
-        <!-- <script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
+    <script src="review.js"></script>
+    <!-- <script>
         $(document).ready(function () {
             //Jquery here...
             var i = 1;

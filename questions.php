@@ -23,17 +23,21 @@ $arr = json_decode($question, true);
 
         padding: 20px;
     }
+    /* .position{
+        z-index: 4;
+    } */
 </style>
 </head>
 
 <body>
-    <nav class="navbar bg-light border border-dark ">
+    <div class="position">
+    <nav class="navbar bg-white border border-dark ">
         <a href="#" class="col-1 col-xs-4 navbar-brand"> <img
                 src="https://www.ucertify.com/layout/themes/bootstrap4/images/logo/ucertify_logo.png"
                 alt="uCertify Logo"></a>
         <h1 class=" col-xs-4 navbar-nav mx-auto">uCertify Prep Test</h1>
     </nav>
-
+</div>
 
     <div class="list-group w-25" style="display:none; float: left; background: white; z-index: 1; position:relative; float: left;
     background: white;
@@ -48,34 +52,28 @@ $arr = json_decode($question, true);
         <div class="d-flex" style="top: 1px; position: relative; z-index: 2; cursor:pointer;">
             <p class="list-group-item list-group-item-action" style="cursor:pointer;margin-top: 4px;z-index: 1;"
                 id="0li">
-                <span class="badge rounded-pill text-bg-success w-25" style="background-color: white;">Attempted</span>
-                <span class="badge rounded-pill text-bg-warning w-25"
+                <span class="badge at-b rounded-pill text-bg-success w-25" style="background-color: white;">Attempted</span>
+                <span class="badge ut-b rounded-pill text-bg-warning w-25"
                     style="background-color: white;">Unattempted</span>
+                    <span class="badge all-b rounded-pill text-bg-primary w-25"
+                    style="background-color: white;">All</span>
             </p>
         </div>
-
+        </div>
         <!-- <p class="list-group-item list-group-item-action li-1"></p> -->
-    </div>
+    
     <div class="container">
         <div class="questions-n-ans my-4">
             <p class="question" style="z-index: -1;" id="quest">
             </p>
-            <div class="fixed-bottom bg-light p-3 border border-dark" style="z-index: -1;">
-                <div class="d-flex justify-content-end">
-                    <p id="time"></p>
-                    <button class="list-bt btn btn-secondary col-1 mx-5">LIST</button>
-                    <button class="prev btn btn-secondary col-1 mx-5">PREV</button>
-                    <p class="data col-1"></p>
-                    <button class="next btn btn-secondary col-1 mx-5">Next</button>
-                    <button class="end btn btn-secondary col-1 mx-5">End Test</button>
-                </div>
-            </div>
+           
 
 
 
         </div>
+    </div>
 
-        <form class="options">
+        <form class="options container position">
             <!-- <div class="form-check">
                 <input type="answer radio" class="form-check-input" id="radio1" name="optradio" value="option1">
                 <label class="answer form-check-label" for="radio1"></label>
@@ -93,7 +91,19 @@ $arr = json_decode($question, true);
                 <label class="answer3 form-check-label" for="radio2"></label>
             </div> -->
         </form>
-        <div class="modal" tabindex="-1">
+    </div>
+           <div class="position" style="position:fixed; position: absolute; width: 100%; height: 45%;"></div>
+         <div class="fixed-bottom bg-light p-3 border border-dark" style="z-index: -1;">
+                <div class="d-flex justify-content-end">
+                    <p id="time"></p>
+                    <button class="list-bt btn btn-secondary col-1 mx-5">LIST</button>
+                    <button class="prev btn btn-secondary col-1 mx-5">PREV</button>
+                    <p class="data col-1"></p>
+                    <button class="next btn btn-secondary col-1 mx-5">Next</button>
+                    <button class="end btn btn-secondary col-1 mx-5">End Test</button>
+                </div>
+            </div>
+        <div class="modal" tabindex="-1" style="z-index:3;">
             <div class="modal-dialog modal-dialog-centered">
                 <div class="modal-content">
                     <div class="modal-header">
@@ -102,12 +112,19 @@ $arr = json_decode($question, true);
                     </div>
                     <div class="modal-body">
                         <p>You want to end the test</p>
+                        <div class="d-flex justify-content-between">
+                            <button class="btn btn-primary">Total <br><span class="total-item"></span>
+                            </button>
+                            <button class="btn btn-danger">Unattempt <br><span class="unattempt"></span></button>
+                            <button class="btn btn-success">Attempt <br><span class="attempt"></span></button>
+                            
+                        </div>
                     </div>
                     <div class="modal-footer">
-                        <button type="button" class="itmlist btn btn-warning">Go to item list</button>
-                        <button type="button" class="modclose btn btn-secondary">Cancel</button>
+                        <button type="button" class="itmlist btn btn-warning" style="z-index: 10!important;">Go to item list</button>
+                        <button type="button" class="modclose btn btn-secondary" style="z-index: 10!important;">Cancel</button>
                         <a href="result.html">
-                            <button type="button" class="endtest btn btn-danger">End</button></a>
+                            <button type="button" class="endtest btn btn-danger" style="z-index: 10!important;">End</button></a>
                     </div>
                 </div>
             </div>
