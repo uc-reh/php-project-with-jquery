@@ -104,9 +104,9 @@
                     );
                    
                     if (checkat !== null) {
-                        $(".checkat" + k).append("attempted");
+                        $(".checkat" + k).append("attempted").addClass('text-success');
                     } else {
-                        $(".checkat" + k).append("unattempted");
+                        $(".checkat" + k).append("unattempted").addClass('text-danger');
                     }
                     for (i = 0; i < 3; i++) {
 
