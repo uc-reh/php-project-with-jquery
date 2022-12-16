@@ -263,34 +263,49 @@ $(document).ready(function() {
                 k = final_id;
                 console.log(k);
 
-                $(".question").text(JSON.parse(data[k]["content_text"]).question);
-                if (k <= 8) {
-                    $(".data").text("0" + (k + 1) + " of " + data.length);
-                } else {
-                    $(".data").text("" + (k + 1) + " of " + data.length);
+                function SelectQues(k) {
+                    $(".list-group-item").click(function() {
+                        $(".options").empty();
+                        var qid = $(this).attr("id");
+                        var final_id = parseInt(qid);
+                        k = final_id;
+                        $(".question").text(
+                            JSON.parse(data[k]["content_text"]).question
+                        );
+                        if (k <= 8) {
+                            $(".data").text("0" + (k + 1) + " of " + data.length);
+                        } else {
+                            $(".data").text("" + (k + 1) + " of " + data.length);
+                        }
+                        for (i = 0; i < 4; i++) {
+                            $(".options").append(
+                                '<div class="form-check"><input type="radio" class="form-check-input" id="radio' +
+                                (i + 1) +
+                                '" name="optradio" value="' +
+                                i +
+                                '"><label class="answer form-check-label d-block" for="' +
+                                JSON.parse(data[k]["content_text"]).answers[i]
+                                .answer +
+                                '">' +
+                                JSON.parse(data[k]["content_text"]).answers[i]
+                                .answer +
+                                "</label>"
+                            );
+
+                            if (k > 0) {
+                                $(".prev").prop("disabled", false);
+                            }
+                            if (k == data.length - 1) {
+                                $(".next").prop("disabled", true);
+                            }
+                            if (k == 0) {
+                                $(".prev").prop("disabled", true);
+                            }
+                        }
+                    });
                 }
-                for (i = 0; i < 4; i++) {
-                    $(".options").append(
-                        '<div class="form-check"><input type="radio" class="form-check-input" id="radio' +
-                        (i + 1) +
-                        '" name="optradio" value="' +
-                        i +
-                        '"><label class="answer form-check-label d-block" for="' +
-                        JSON.parse(data[k]["content_text"]).answers[i].answer +
-                        '">' +
-                        JSON.parse(data[k]["content_text"]).answers[i].answer +
-                        "</label>"
-                    );
-                    if (k > 0) {
-                        $(".prev").prop("disabled", false);
-                    }
-                    if (k == data.length - 1) {
-                        $(".next").prop("disabled", true);
-                    }
-                    if (k == 0) {
-                        $(".prev").prop("disabled", true);
-                    }
-                }
+                SelectQues(k);
+
                 $(".form-check-input").click(function() {
                     $.post(
                         "testingdata.php", {
@@ -308,31 +323,92 @@ $(document).ready(function() {
                 $(".form-check-input").click(function() {
                     sessionStorage.setItem("option" + k, $(this).attr("value"));
                 });
-                $(".checkit").empty();
-
                 itemValue = sessionStorage.getItem("option" + k);
                 if (itemValue !== null) {
                     $('input[value="' + itemValue + '"]').click();
                 }
-                $(".form-check-input").attr("disabled", "true");
 
-                if (sessionStorage.getItem("result" + k) == 1) {
-                    $(".checkit").append(
-                        '<p class="alert alert-success d-flex justify-content-center">correct</p>'
-                    );
-                } else if (sessionStorage.getItem("result" + k) == 0) {
-                    $(".checkit").append(
-                        '<p class="alert alert-warning d-flex justify-content-center">Incorrect</p>'
-                    );
-                } else {
-                    $(".checkit").append(
-                        '<p class="alert alert-danger d-flex justify-content-center">Unattempt</p>'
-                    );
-                }
-                $(".snippet").append(
-                    JSON.parse(data[k]["content_text"]).explanation
-                );
-                selectCorrect(k);
+                $(".at-b").click(function() {
+                    $(".snip").empty();
+                    $("p").removeClass("list-group-item");
+                    $(".snip").css("margin-top", "-16px");
+
+                    // $('.list-group-item-action').empty();
+                    // $(".list-group-item").removeClass("list-group-item");
+                    for (snips = 0; snips < data.length; snips++) {
+                        optValue = sessionStorage.getItem("option" + snips);
+                        if (optValue !== null) {
+                            $(".list-group").append(
+                                '<p class="list-group-item snip list-group-item-action" style="cursor:pointer; margin-top:-10px; z-index: 1;" id="' +
+                                snips +
+                                'li"><b>Ques :  ' +
+                                (snips + 1) +
+                                " </b>" +
+                                data[snips]["snippet"] +
+                                '<br><span class="badge rounded-pill text-bg-success att' +
+                                snips +
+                                '">attempted</span></p>'
+                            );
+                        }
+                    }
+                    SelectQues(snips);
+                });
+                $(".ut-b").click(function() {
+                    $(".snip").empty();
+                    $("p").removeClass("list-group-item");
+                    $(".snip").css("margin-top", "-16px");
+                    for (snips = 0; snips < data.length; snips++) {
+                        optValue = sessionStorage.getItem("option" + snips);
+                        if (optValue == null) {
+                            $(".list-group").append(
+                                '<p class="list-group-item snip list-group-item-action" style="cursor:pointer; margin-top:-10px; z-index: 1;" id="' +
+                                snips +
+                                'li"><b>Ques :  ' +
+                                (snips + 1) +
+                                " </b>" +
+                                data[snips]["snippet"] +
+                                '<br><span class="badge rounded-pill text-bg-warning att' +
+                                snips +
+                                '">unattempted</span></p>'
+                            );
+                        }
+                    }
+                    SelectQues(snips);
+                });
+                $(".all-b").click(function() {
+                    $(".snip").empty();
+                    $("p").removeClass("list-group-item");
+                    $(".snip").css("margin-top", "-16px");
+                    for (snips = 0; snips < data.length; snips++) {
+                        optValue = sessionStorage.getItem("option" + snips);
+                        if (optValue == null) {
+                            $(".list-group").append(
+                                '<p class="list-group-item snip list-group-item-action" style="cursor:pointer; margin-top:-10px; z-index: 1;" id="' +
+                                snips +
+                                'li"><b>Ques :  ' +
+                                (snips + 1) +
+                                " </b>" +
+                                data[snips]["snippet"] +
+                                '<br><span class="badge rounded-pill text-bg-warning att' +
+                                snips +
+                                '">unattempted</span></p>'
+                            );
+                        } else if (optValue !== null) {
+                            $(".list-group").append(
+                                '<p class="list-group-item snip list-group-item-action" style="cursor:pointer; margin-top:-10px; z-index: 1;" id="' +
+                                snips +
+                                'li"><b>Ques :  ' +
+                                (snips + 1) +
+                                " </b>" +
+                                data[snips]["snippet"] +
+                                '<br><span class="badge rounded-pill text-bg-success att' +
+                                snips +
+                                '">attempted</span></p>'
+                            );
+                        }
+                    }
+                    SelectQues(snips);
+                });
             }); //End of iterating items function
 
             $(".form-check-input").click(function() {
@@ -353,79 +429,7 @@ $(document).ready(function() {
             //     $(".list-group").toggle();
             // });
             //Filtering The attempt
-            $(".at-b").click(function() {
-                $(".snip").empty();
-                $(".list-group-item-action").empty();
-                // $(".list-group-item").removeClass("list-group-item");
-                for (snips = 0; snips < data.length; snips++) {
-                    optValue = sessionStorage.getItem("option" + snips);
-                    if (optValue !== null) {
-                        $(".list-group").append(
-                            '<p class="list-group-item snip list-group-item-action" style="cursor:pointer; margin-top:-10px; z-index: 1;" id="' +
-                            snips +
-                            'li"><b>Ques :  ' +
-                            (snips + 1) +
-                            " </b>" +
-                            data[snips]["snippet"] +
-                            '<br><span class="badge rounded-pill text-bg-success att' +
-                            snips +
-                            '">attempted</span></p>'
-                        );
-                    }
-                }
-            });
-            $(".ut-b").click(function() {
-                $(".snip").empty();
-                // $(".list-group-item").removeClass("list-group-item");
-                for (snips = 0; snips < data.length; snips++) {
-                    optValue = sessionStorage.getItem("option" + snips);
-                    if (optValue == null) {
-                        $(".list-group").append(
-                            '<p class="list-group-item snip list-group-item-action" style="cursor:pointer; margin-top:-10px; z-index: 1;" id="' +
-                            snips +
-                            'li"><b>Ques :  ' +
-                            (snips + 1) +
-                            " </b>" +
-                            data[snips]["snippet"] +
-                            '<br><span class="badge rounded-pill text-bg-warning att' +
-                            snips +
-                            '">unattempted</span></p>'
-                        );
-                    }
-                }
-            });
-            $(".all-b").click(function() {
-                $(".snip").empty();
-                // $(".list-group-item").removeClass("list-group-item");
-                for (snips = 0; snips < data.length; snips++) {
-                    optValue = sessionStorage.getItem("option" + snips);
-                    if (optValue == null) {
-                        $(".list-group").append(
-                            '<p class="list-group-item snip list-group-item-action" style="cursor:pointer; margin-top:-10px; z-index: 1;" id="' +
-                            snips +
-                            'li"><b>Ques :  ' +
-                            (snips + 1) +
-                            " </b>" +
-                            data[snips]["snippet"] +
-                            '<br><span class="badge rounded-pill text-bg-warning att' +
-                            snips +
-                            '">unattempted</span></p>'
-                        );
-                    } else if (optValue !== null) {
-                        $(".list-group").append(
-                            '<p class="list-group-item snip list-group-item-action" style="cursor:pointer; margin-top:-10px; z-index: 1;" id="' +
-                            snips +
-                            'li"><b>Ques :  ' +
-                            (snips + 1) +
-                            " </b>" +
-                            data[snips]["snippet"] +
-                            '<br><span class="badge rounded-pill text-bg-success att' +
-                            snips +
-                            '">attempted</span></p>'
-                        );
-                    }
-                }
-            });
+
         }, // success: function (data) ends here
     }); //.ajax() ends here
 
