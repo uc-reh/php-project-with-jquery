@@ -25,12 +25,16 @@ $arr = json_decode($question, true);
     }
     /* .position{
         z-index: 4;
+        position: absolute;
+        width: 71%;
+        height: 22%;
+        right: 66px;
     } */
 </style>
 </head>
 
 <body>
-    <div class="position">
+    <div class="#">
     <nav class="navbar bg-white border border-dark ">
         <a href="#" class="col-1 col-xs-4 navbar-brand"> <img
                 src="https://www.ucertify.com/layout/themes/bootstrap4/images/logo/ucertify_logo.png"
@@ -73,7 +77,7 @@ $arr = json_decode($question, true);
         </div>
     </div>
 
-        <form class="options container position">
+        <form class="options container">
             <!-- <div class="form-check">
                 <input type="answer radio" class="form-check-input" id="radio1" name="optradio" value="option1">
                 <label class="answer form-check-label" for="radio1"></label>
@@ -92,7 +96,7 @@ $arr = json_decode($question, true);
             </div> -->
         </form>
     </div>
-           <div class="position" style="position:fixed; position: absolute; width: 100%; height: 45%;"></div>
+           <div class="position" style="position:fixed; position: absolute; width: 80%; height: 75%; right: 27px; top: 76px;"></div>
          <div class="fixed-bottom bg-light p-3 border border-dark" style="z-index: -1;">
                 <div class="d-flex justify-content-end">
                     <p id="time"></p>
