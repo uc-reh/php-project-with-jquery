@@ -26,12 +26,10 @@
 </head>
 
 <body>
-    <div class="position">
-        <nav class="navbar bg-white border border-dark">
-            <a href="#" class="col-1 col-xs-4 navbar-brand"> <img src="https://www.ucertify.com/layout/themes/bootstrap4/images/logo/ucertify_logo.png" alt="uCertify Logo"></a>
-            <h1 class=" col-xs-4 navbar-nav mx-auto">uCertify Prep Test</h1>
-        </nav>
-    </div>
+    <nav class="navbar bg-white border border-dark">
+        <a href="#" class="col-1 col-xs-4 navbar-brand"> <img src="https://www.ucertify.com/layout/themes/bootstrap4/images/logo/ucertify_logo.png" alt="uCertify Logo"></a>
+        <h1 class=" col-xs-4 navbar-nav mx-auto">uCertify Prep Test</h1>
+    </nav>
 
 
     <div class="list-group w-25" style="display:none; float: left; background: white; z-index: 1; position:relative; background: white;
@@ -60,42 +58,42 @@
     </div>
 
 
-    <form class="container options position">
+    <form class="container options">
 
     </form>
 
-    <div class="conatiner my-4 position">
-        <div class="container checkit"></div>
-        <p class="container snippet bg-success text-light"></p>
+    <div class="conatiner my-4">
+        <div class=" container checkit "></div>
+        <p class="container snippet bg-success text-light "></p>
 
     </div>
 
+    <div class="position" style="position:fixed; position: absolute; width: 80%; height: 75%; right: 27px; top: 76px;"></div>
 
-
-    <div class="fixed-bottom bg-light p-3 border border-dark" style="z-index:10;">
-        <div class="d-flex justify-content-end">
-            <p id="time"></p>
-            <button class="list-bt btn btn-secondary col-1 mx-5" style="z-index:10;">LIST</button>
-            <button class="prev btn btn-secondary col-1 mx-5">PREV</button>
-            <p class="data col-1"></p>
-            <button class="next btn btn-secondary col-1 mx-5">Next</button>
-            <a href="result.html">
-                <button class="goback btn btn-secondary mx-5">GO Back</button>
+    <div class="fixed-bottom bg-light p-3 border border-dark " style="z-index:10; ">
+        <div class="d-flex justify-content-end ">
+            <p id="time "></p>
+            <button class="list-bt btn btn-secondary col-1 mx-5 " style="z-index:10; ">LIST</button>
+            <button class="prev btn btn-secondary col-1 mx-5 ">PREV</button>
+            <p class="data col-1 "></p>
+            <button class="next btn btn-secondary col-1 mx-5 ">Next</button>
+            <a href="result.html ">
+                <button class="goback btn btn-secondary mx-5 ">GO Back</button>
             </a>
         </div>
 
     </div>
 
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
-    <script src="review.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js "></script>
+    <script src="review.js "></script>
     <!-- <script>
         $(document).ready(function () {
             //Jquery here...
             var i = 1;
             $.ajax(
                 {
-                    url: "http://localhost/PHP_PROJECT/question.json",
-                    type: "POST",
+                    url: "http://localhost/PHP_PROJECT/question.json ",
+                    type: "POST ",
                     success: function (data) {
                         var str = JSON.parse(data[0]['content_text']);
                         // console.log(str.question);
@@ -112,7 +110,7 @@
                             k = i++;
                             console.log(k);
                             if (k > data.length - 1) {
-                                alert("Questions khatam!!");
+                                alert("Questions khatam!! ");
                             }
                             else {
                                 $('.question').text(JSON.parse(data[k]['content_text']).question);
@@ -130,7 +128,7 @@
                             console.log(k);
 
                             if (k > data.length - 1 || k < 0) {
-                                alert("Questions khatam!!");
+                                alert("Questions khatam!! ");
                             }
                             else {
                                 $('.question').text(JSON.parse(data[k]['content_text']).question);
