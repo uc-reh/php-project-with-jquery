@@ -19,9 +19,11 @@ $arr = json_decode($question, true);
             margin-top: 239px;
         } */
     .options {
-        background-color: gainsboro;
-
-        padding: 20px;
+        padding: 11px;
+    }
+    #time{
+        font-family: monospace;
+    margin-top: auto;
     }
     /* .position{
         z-index: 4;
@@ -39,7 +41,7 @@ $arr = json_decode($question, true);
         <a href="#" class="col-1 col-xs-4 navbar-brand"> <img
                 src="https://www.ucertify.com/layout/themes/bootstrap4/images/logo/ucertify_logo.png"
                 alt="uCertify Logo"></a>
-        <h1 class=" col-xs-4 navbar-nav mx-auto">uCertify Prep Test</h1>
+        <h1 class=" col-xs-4 navbar-nav col-7" style="font-size: 30px;">uCertify Prep Test</h1>
     </nav>
 </div>
 
@@ -56,11 +58,14 @@ $arr = json_decode($question, true);
         <div class="d-flex" style="top: 1px; position: relative; z-index: 2; cursor:pointer;">
             <p class="list-group-item list-group-item-action" style="cursor:pointer;margin-top: 4px;z-index: 1;"
                 id="0li">
-                <span class="badge at-b rounded-pill text-bg-success w-25" style="background-color: white;">Attempted</span>
-                <span class="badge ut-b rounded-pill text-bg-warning w-25"
-                    style="background-color: white;">Unattempted</span>
-                    <span class="badge all-b rounded-pill text-bg-primary w-25"
+                <button style="border: none;">
+                <span class="btn all-b text-primary btn-outline-dark"
                     style="background-color: white;">All</span>
+                <span class="btn at-b text-success btn-outline-dark" style="background-color: white;">Attempted</span>
+                <span class="btn ut-b text-warning btn-outline-dark"
+                    style="background-color: white;">Unattempted</span>
+                    </button>
+                    
             </p>
         </div>
         </div>
@@ -68,8 +73,8 @@ $arr = json_decode($question, true);
     
     <div class="container">
         <div class="questions-n-ans my-4">
-            <p class="question" style="z-index: -1;" id="quest">
-            </p>
+            <h6 class="question" style="z-index: -1;" id="quest">
+            </h6>
            
 
 
@@ -100,11 +105,11 @@ $arr = json_decode($question, true);
          <div class="fixed-bottom bg-light p-3 border border-dark" style="z-index: -1;">
                 <div class="d-flex justify-content-end">
                     <p id="time"></p>
-                    <button class="list-bt btn btn-secondary col-1 mx-5">LIST</button>
-                    <button class="prev btn btn-secondary col-1 mx-5">PREV</button>
-                    <p class="data col-1"></p>
-                    <button class="next btn btn-secondary col-1 mx-5">Next</button>
-                    <button class="end btn btn-secondary col-1 mx-5">End Test</button>
+                    <button class="list-bt btn btn-light border-dark col-1 mx-5">List</button>
+                    <button class="prev btn btn-light border-dark col-1 mx-5">Prev</button>
+                    <p class="data col-1" style="font-family: monospace; margin-left: 24px; padding-top: 12px;"></p>
+                    <button class="next btn btn-light border-dark col-1 mx-5">Next</button>
+                    <button class="end btn btn-light border-dark col-1 mx-5">End Test</button>
                 </div>
             </div>
         <div class="modal" tabindex="-1" style="z-index:3;">

@@ -16,31 +16,36 @@
         td {
             cursor: pointer;
         }
+        
+        .snippet {
+            text-align: center;
+        }
     </style>
 </head>
 
 <body>
     <nav class="navbar bg-white border border-dark ">
         <a href="#" class="col-1 col-xs-4 navbar-brand"> <img src="https://www.ucertify.com/layout/themes/bootstrap4/images/logo/ucertify_logo.png" alt="uCertify Logo"></a>
-        <h1 class=" col-xs-4 navbar-nav mx-auto">uCertify Prep Test</h1>
+        <h1 class=" col-xs-4 navbar-nav mx-auto col-3" style="font-size: 22px;">uCertify Prep Test</h1>
     </nav>
     <div class="container result-page">
         <a href="review.html">Visit Review Page</a>
         <div class="buttoncls my-3 mr-2" style="margin-left: 280px!important;">
-            <button class="btn btn-light custom_btn px-2 px-md-5 bg-primary text-light">
+            <button class="btn btn-light custom_btn px-2 px-md-5 text-dark" style="background-color: #5f96bfab !important;
+">
                 <span class="d-inline-block font18 text-indigo icon-white"></span>
                 Result <br><span class="result"></span>
             </button>
             <button class="btn btn-light custom_btn px-2 px-md-5 bg-secondary text-light">Items
                 <br><span class="items"></span>
             </button>
-            <button class="btn btn-light custom_btn px-2 px-md-5 bg-success text-light">Correct
+            <button class="btn btn-light custom_btn px-2 px-md-5 text-light" style="background-color: #28a745 !important;">Correct
                 <br><span class="correct"></span>
             </button>
-            <button class="btn btn-light custom_btn px-2 px-md-5 bg-warning text-light">Incorrect
+            <button class="btn btn-light custom_btn px-2 px-md-5 text-light" style="background-color: #fbbc05 !important;">Incorrect
                 <br> <span class="incorrect"></span>
             </button>
-            <button class="btn btn-light custom_btn px-2 px-md-5 bg-danger text-light">Unattempted
+            <button class="btn btn-light custom_btn px-2 px-md-5 text-dark" style="background-color : #e37781 !important;">Unattempted
                 <br> <span class="unat"></span>
             </button>
 
@@ -88,7 +93,7 @@
                     checkres = sessionStorage.getItem("result" + k);
                     // var strloop = JSON.parse(data[k]["content_text"]);
 
-                    $("tbody").append('<tr><th scope="row" class="snippet">' + (k + 1) + '</th><td class="snippet-an" id="s' + k + '">' + data[k]["snippet"] + '</td><td class="d-flex justify-content-between"><p class="border-dark ' + k + 'var0 corr' +
+                    $("tbody").append('<tr><th scope="row" class="snippet">' + (k + 1) + '</th><td class="snippet-an" id="s' + k + '">' + data[k]["snippet"] + '</td><td class="d-flex justify-content-between" style="font-weight: 700;"><p class="border-dark ' + k + 'var0 corr' +
                         k + 'li' + 0 +
                         '">A</p><p class="border-dark ' + k + 'var1 corr' +
                         k + 'li' + 1 +
@@ -99,10 +104,13 @@
                         '">D</p></td > <td class="checkat' + k + '"></td></tr >'
                     );
 
-                    if (checkat !== null) {
-                        $(".checkat" + k).append("attempted").addClass('text-success');
+
+                    if ((sessionStorage.getItem("result" + k)) == (1)) {
+                        $(".checkat" + k).append("Correct").addClass('text-success');
+                    } else if (checkat !== null) {
+                        $(".checkat" + k).append("Attempted").addClass('text-success');
                     } else {
-                        $(".checkat" + k).append("unattempted").addClass('text-danger');
+                        $(".checkat" + k).append("Unattempted").addClass('text-danger');
                     }
                     for (i = 0; i < 4; i++) {
 
@@ -110,10 +118,10 @@
                         //    (JSON.parse(data[0]["content_text"]).answers[2]['is_correct'])
                         // alert('sahi hai bhai');
                         if ((sessionStorage.getItem("option" + k)) == i) {
-                            $('.' + k + 'var' + i).addClass('bg-danger border-dark border ms-2 rounded text-light');
+                            $('.' + k + 'var' + i).addClass('text-danger');
                         }
                         if (JSON.parse(data[k]["content_text"]).answers[i]['is_correct'] == '1' && JSON.parse(data[k]["content_text"]).answers[i]['is_correct'] !== '0') {
-                            $('.corr' + k + 'li' + i).addClass('bg-success border-dark border ms-2 rounded text-light');
+                            $('.corr' + k + 'li' + i).addClass('text-success');
                         }
 
                         // $('.corr1li3').addClass('bg-success border-dark border ms-2 rounded text-light');
@@ -135,7 +143,7 @@
                         $('.incorrect').text(ncount);
                     }
 
-                    if ($('.checkat' + k).text() == 'unattempted') {
+                    if ($('.checkat' + k).text() == 'Unattempted') {
                         ucount++;
                     }
                     $('.unat').text(ucount)

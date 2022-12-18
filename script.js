@@ -171,7 +171,7 @@ $(document).ready(function() {
                     data[n]["snippet"] +
                     '<br><span class="badge rounded-pill text-bg-warning att' +
                     n +
-                    '">unattempted</span></p>'
+                    '">Unattempted</span></p>'
                 );
                 listBadgeupdate(n);
             }
@@ -192,6 +192,7 @@ $(document).ready(function() {
                         var final_id = parseInt(qid);
                         k = final_id;
                         $(".question").text(JSON.parse(data[k]["content_text"]).question);
+
                         if (k <= 8) {
                             $(".data").text("0" + (k + 1) + " of " + data.length);
                         } else {
@@ -266,7 +267,7 @@ $(document).ready(function() {
                                 data[snips]["snippet"] +
                                 '<br><span class="badge rounded-pill text-bg-success att' +
                                 snips +
-                                '">attempted</span></p>'
+                                '">Attempted</span></p>'
                             );
                         }
 
@@ -290,7 +291,7 @@ $(document).ready(function() {
                                 data[snips]["snippet"] +
                                 '<br><span class="badge rounded-pill text-bg-warning att' +
                                 snips +
-                                '">unattempted</span></p>'
+                                '">Unattempted</span></p>'
                             );
                         }
                     }
@@ -313,7 +314,7 @@ $(document).ready(function() {
                                 data[snips]["snippet"] +
                                 '<br><span class="badge rounded-pill text-bg-warning att' +
                                 snips +
-                                '">unattempted</span></p>'
+                                '">Unattempted</span></p>'
                             );
                         } else if (optValue !== null) {
                             $(".list-group").append(
@@ -325,7 +326,7 @@ $(document).ready(function() {
                                 data[snips]["snippet"] +
                                 '<br><span class="badge rounded-pill text-bg-success att' +
                                 snips +
-                                '">attempted</span></p>'
+                                '">Attempted</span></p>'
                             );
                         }
                     }

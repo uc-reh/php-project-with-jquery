@@ -38,15 +38,15 @@ $(document).ready(function() {
 
             if (sessionStorage.getItem("result" + k) == 1) {
                 $(".checkit").append(
-                    '<p class="alert alert-success d-flex justify-content-center">correct</p>'
+                    '<button class="btn btn-success d-flex mx-auto">Correct</button>'
                 );
             } else if (sessionStorage.getItem("result" + k) == 0) {
                 $(".checkit").append(
-                    '<p class="alert alert-warning d-flex justify-content-center">Incorrect</p>'
+                    '<button class="btn btn-warning d-flex mx-auto">Incorrect</button>'
                 );
             } else {
                 $(".checkit").append(
-                    '<p class="alert alert-danger d-flex justify-content-center">Unattempt</p>'
+                    '<button class="btn btn-danger d-flex mx-auto">Unattempt</button>'
                 );
             }
             // $('input[value="' + 1 + '"]').addClass('bg-success');
@@ -134,15 +134,15 @@ $(document).ready(function() {
 
                     if (sessionStorage.getItem("result" + k) == 1) {
                         $(".checkit").append(
-                            '<p class="alert alert-success d-flex justify-content-center">correct</p>'
+                            '<button class="btn btn-success d-flex mx-auto">Correct</button>'
                         );
                     } else if (sessionStorage.getItem("result" + k) == 0) {
                         $(".checkit").append(
-                            '<p class="alert alert-warning d-flex justify-content-center">Incorrect</p>'
+                            '<button class="btn btn-warning d-flex mx-auto">Incorrect</button>'
                         );
                     } else {
                         $(".checkit").append(
-                            '<p class="alert alert-danger d-flex justify-content-center">Unattempt</p>'
+                            '<button class="btn btn-danger d-flex mx-auto">Unattempt</button>'
                         );
                     }
                     $(".snippet").append(
@@ -212,15 +212,15 @@ $(document).ready(function() {
                     $(".form-check-input").attr("disabled", "true");
                     if (sessionStorage.getItem("result" + k) == 1) {
                         $(".checkit").append(
-                            '<p class="alert alert-success d-flex justify-content-center">correct</p>'
+                            '<button class="btn btn-success d-flex mx-auto">Correct</button>'
                         );
                     } else if (sessionStorage.getItem("result" + k) == 0) {
                         $(".checkit").append(
-                            '<p class="alert alert-warning d-flex justify-content-center">Incorrect</p>'
+                            '<button class="btn btn-warning d-flex mx-auto">Incorrect</button>'
                         );
                     } else {
                         $(".checkit").append(
-                            '<p class="alert alert-danger d-flex justify-content-center">Unattempt</p>'
+                            '<button class="btn btn-danger d-flex mx-auto">Unattempt</button>'
                         );
                     }
                     $(".snippet").append(
@@ -271,6 +271,9 @@ $(document).ready(function() {
                         k = final_id;
                         $(".question").text(
                             JSON.parse(data[k]["content_text"]).question
+                        );
+                        $(".snippet").text(
+                            JSON.parse(data[k]["content_text"]).explanation
                         );
                         if (k <= 8) {
                             $(".data").text("0" + (k + 1) + " of " + data.length);
@@ -449,6 +452,9 @@ $(document).ready(function() {
 
     $(".modclose").click(function() {
         $(".modal").hide();
+    });
+    $(".goback").click(function() {
+        window.location.href = "result.html";
     });
     //Start of result page
     // $(".endtest").show(".result-page");

@@ -14,11 +14,6 @@
             margin-top: 239px;
         } */
     
-    .options {
-        background-color: gainsboro;
-        padding: 20px;
-    }
-    
     seq:before {
         content: attr(no);
     }
@@ -28,7 +23,7 @@
 <body>
     <nav class="navbar bg-white border border-dark">
         <a href="#" class="col-1 col-xs-4 navbar-brand"> <img src="https://www.ucertify.com/layout/themes/bootstrap4/images/logo/ucertify_logo.png" alt="uCertify Logo"></a>
-        <h1 class=" col-xs-4 navbar-nav mx-auto">uCertify Prep Test</h1>
+        <h1 class=" col-xs-4 navbar-nav mx-auto col-3" style="font-size: 22px;">uCertify Prep Test</h1>
     </nav>
 
 
@@ -42,9 +37,12 @@
     margin-left: -5px;">
         <div class="d-flex" style="top: 1px; position: relative; z-index: 2; cursor:pointer;">
             <p class="list-group-item list-group-item-action" style="cursor:pointer;margin-top: 4px;z-index: 1;" id="0li">
-                <span class="badge rounded-pill at-b text-bg-success w-25" style="background-color: white;">Attempted</span>
-                <span class="badge rounded-pill ut-b  text-bg-warning w-25" style="background-color: white;">Unattempted</span>
-                <span class="badge rounded-pill all-b text-bg-primary w-25" style="background-color: white;">All</span>
+                <button style="border: none;">
+                    <span class="btn all-b text-primary btn-outline-dark" style="background-color: white;">All</span>
+                    <span class="btn at-b text-success btn-outline-dark" style="background-color: white;">Attempted</span>
+                    <span class="btn ut-b text-warning btn-outline-dark" style="background-color: white;">Unattempted</span>
+                </button>
+
             </p>
         </div>
 
@@ -52,8 +50,10 @@
     </div>
     <div class="container">
         <div class="questions-n-ans my-4">
-            <p class="question" style="z-index: -1;" id="quest">
-            </p>
+            <div class=" container checkit"></div>
+
+            <h6 class="question my-3" style="z-index: -1;" id="quest">
+            </h6>
         </div>
     </div>
 
@@ -63,23 +63,21 @@
     </form>
 
     <div class="conatiner my-4">
-        <div class=" container checkit "></div>
-        <p class="container snippet bg-success text-light "></p>
+        <h5 class="container my-4">Explanation : </h5>
+        <p class="container snippet text-dark text-justify"></p>
 
     </div>
 
     <div class="position" style="position:fixed; position: absolute; width: 80%; height: 75%; right: 27px; top: 76px;"></div>
 
     <div class="fixed-bottom bg-light p-3 border border-dark " style="z-index:10; ">
-        <div class="d-flex justify-content-end ">
-            <p id="time "></p>
-            <button class="list-bt btn btn-secondary col-1 mx-5 " style="z-index:10; ">LIST</button>
-            <button class="prev btn btn-secondary col-1 mx-5 ">PREV</button>
-            <p class="data col-1 "></p>
-            <button class="next btn btn-secondary col-1 mx-5 ">Next</button>
-            <a href="result.html ">
-                <button class="goback btn btn-secondary mx-5 ">GO Back</button>
-            </a>
+        <div class="d-flex justify-content-end">
+            <p id="time"></p>
+            <button class="list-bt btn btn-light border-dark col-1 mx-5">List</button>
+            <button class="prev btn btn-light border-dark col-1 mx-5">Prev</button>
+            <p class="data col-1" style="font-family: monospace; margin-left: 24px; padding-top: 12px;"></p>
+            <button class="next btn btn-light border-dark col-1 mx-5">Next</button>
+            <button class="goback btn btn-light border-dark col-1 mx-5">Go Back</button>
         </div>
 
     </div>
