@@ -10,25 +10,44 @@ $(document).ready(function() {
             $(".question").text(str.question);
             $(".options").empty();
 
-            for (i = 0; i < 4; i++) {
-                $(".options").append(
-                    '<div class="form-check"><input type="radio" class="form-check-input" id="radio' +
-                    (i + 1) +
-                    '"name="optradio" value="' +
-                    i +
-                    '"><label class= "answer form-check-label d-block" for= "' +
-                    JSON.parse(data[0]["content_text"]).answers[i].answer +
-                    '">' +
-                    str.answers[i].answer +
-                    "</label></div>"
+            //All Defined Functions 
+            function printQuestions(k) {
+                $(".question").text(
+                    JSON.parse(data[k]["content_text"]).question
                 );
             }
+
+            function printOptions(k) {
+                for (i = 0; i < 4; i++) {
+                    $(".options").append(
+                        '<div class="form-check"><input type="radio" class="form-check-input" id="radio' +
+                        (i + 1) +
+                        '" name="optradio" value="' +
+                        i +
+                        '"><label class="answer form-check-label d-block" for="' +
+                        JSON.parse(data[k]["content_text"]).answers[i].answer +
+                        '">' +
+                        JSON.parse(data[k]["content_text"]).answers[i].answer +
+                        "</label></div>"
+                    );
+                }
+            }
+
+            function printIteration(k) {
+                if (k <= 8) {
+                    $(".data").text("0" + (k + 1) + " of " + data.length);
+                } else {
+                    $(".data").text("" + (k + 1) + " of " + data.length);
+                }
+            }
+            //End Functions
+
+            printOptions(k);
 
             $(".form-check-input").click(function() {
                 sessionStorage.setItem("option0", $(this).attr("value"));
             });
             itemValue = sessionStorage.getItem("option0");
-            //   console.log(itemValue);
             if (itemValue !== null) {
                 $('input[value="' + itemValue + '"]').click();
             }
@@ -47,32 +66,15 @@ $(document).ready(function() {
             //Everything on pressing next
             $(".next").click(function() {
                 $(".options").empty();
-
                 $(".prev").prop("disabled", false);
                 k = k + 1;
                 if (k > data.length - 1) {
                     k = data.length - 1;
                 } else {
-                    $(".question").text(JSON.parse(data[k]["content_text"]).question);
+                    printQuestions(k);
                     console.log(k);
-                    for (i = 0; i < 4; i++) {
-                        $(".options").append(
-                            '<div class="form-check"><input type="radio" class="form-check-input" id="radio' +
-                            (i + 1) +
-                            '" name="optradio" value="' +
-                            i +
-                            '"><label class="answer form-check-label d-block" for="' +
-                            JSON.parse(data[k]["content_text"]).answers[i].answer +
-                            '">' +
-                            JSON.parse(data[k]["content_text"]).answers[i].answer +
-                            "</label></div>"
-                        );
-                    }
-                    if (k <= 8) {
-                        $(".data").text("0" + (k + 1) + " of " + data.length);
-                    } else {
-                        $(".data").text("" + (k + 1) + " of " + data.length);
-                    }
+                    printOptions(k);
+                    printIteration(k);
 
                     if (k == data.length - 1) {
                         $(".next").prop("disabled", true);
@@ -110,27 +112,9 @@ $(document).ready(function() {
                 if (k < 0) {
                     k = 0;
                 } else {
-                    $(".question").text(JSON.parse(data[k]["content_text"]).question);
-
-                    for (i = 0; i < 4; i++) {
-                        $(".options").append(
-                            '<div class="form-check"><input type="radio" class="form-check-input" id="radio' +
-                            (i + 1) +
-                            '" name="optradio" value="' +
-                            i +
-                            '"><label class="answer form-check-label d-block" for="' +
-                            JSON.parse(data[k]["content_text"]).answers[i].answer +
-                            '">' +
-                            JSON.parse(data[k]["content_text"]).answers[i].answer +
-                            "</label></div>"
-                        );
-                    }
-                    console.log(k);
-                    if (k <= 8) {
-                        $(".data").text("0" + (k + 1) + " of " + data.length);
-                    } else {
-                        $(".data").text("" + (k + 1) + " of " + data.length);
-                    }
+                    printQuestions(k);
+                    printOptions(k);
+                    printIteration(k);
                     if (k == 0) {
                         $(".prev").prop("disabled", true);
                     }
@@ -191,36 +175,20 @@ $(document).ready(function() {
                         var qid = $(this).attr("id");
                         var final_id = parseInt(qid);
                         k = final_id;
-                        $(".question").text(JSON.parse(data[k]["content_text"]).question);
+                        printQuestions(k);
+                        printIteration(k);
+                        printOptions(k);
 
-                        if (k <= 8) {
-                            $(".data").text("0" + (k + 1) + " of " + data.length);
-                        } else {
-                            $(".data").text("" + (k + 1) + " of " + data.length);
+                        if (k > 0) {
+                            $(".prev").prop("disabled", false);
                         }
-                        for (i = 0; i < 4; i++) {
-                            $(".options").append(
-                                '<div class="form-check"><input type="radio" class="form-check-input" id="radio' +
-                                (i + 1) +
-                                '" name="optradio" value="' +
-                                i +
-                                '"><label class="answer form-check-label d-block" for="' +
-                                JSON.parse(data[k]["content_text"]).answers[i].answer +
-                                '">' +
-                                JSON.parse(data[k]["content_text"]).answers[i].answer +
-                                "</label>"
-                            );
+                        if (k == data.length - 1) {
+                            $(".next").prop("disabled", true);
+                        }
+                        if (k == 0) {
+                            $(".prev").prop("disabled", true);
+                        }
 
-                            if (k > 0) {
-                                $(".prev").prop("disabled", false);
-                            }
-                            if (k == data.length - 1) {
-                                $(".next").prop("disabled", true);
-                            }
-                            if (k == 0) {
-                                $(".prev").prop("disabled", true);
-                            }
-                        }
                     });
                 }
                 SelectQues(k);
