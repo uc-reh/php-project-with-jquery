@@ -122,10 +122,10 @@ $arr = json_decode($question, true);
                     <div class="modal-body">
                         <p>You want to end the test</p>
                         <div class="d-flex justify-content-between">
-                            <button class="btn btn-primary">Total <br><span class="total-item"></span>
+                            <button class="btn btn-primary w-25">Total <br><span class="total-item"></span>
                             </button>
-                            <button class="btn btn-danger">Unattempt <br><span class="unattempt"></span></button>
-                            <button class="btn btn-success">Attempt <br><span class="attempt"></span></button>
+                            <button class="btn btn-danger w-25">Unattempt <br><span class="unattempt"></span></button>
+                            <button class="btn btn-success w-25">Attempt <br><span class="attempt"></span></button>
                             
                         </div>
                     </div>
