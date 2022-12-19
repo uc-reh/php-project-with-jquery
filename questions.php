@@ -58,7 +58,7 @@ $arr = json_decode($question, true);
         <div class="d-flex" style="top: 1px; position: relative; z-index: 2; cursor:pointer;">
             <p class="list-group-item list-group-item-action" style="cursor:pointer;margin-top: 4px;z-index: 1;"
                 id="0li">
-                <button style="border: none;">
+                <button class="btn-group" style="border: none;">
                 <span class="btn all-b text-primary btn-outline-dark"
                     style="background-color: white;">All</span>
                 <span class="btn at-b text-success btn-outline-dark" style="background-color: white;">Attempted</span>
