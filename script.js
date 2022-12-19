@@ -160,15 +160,15 @@ $(document).ready(function() {
             //This is iterating the list items
             $(".list-group-item").click(function() {
                 // $(".options").empty();
-                var qid = $(this).attr("id");
-                var final_id = parseInt(qid);
+                var ques_id = $(this).attr("id");
+                var final_id = parseInt(ques_id);
                 k = final_id;
 
                 function selectQues(k) {
                     $(".list-group-item").click(function() {
                         $(".options").empty();
-                        var qid = $(this).attr("id");
-                        var final_id = parseInt(qid);
+                        var ques_id = $(this).attr("id");
+                        var final_id = parseInt(ques_id);
                         k = final_id;
                         printQuestions(k);
                         printIteration(k);

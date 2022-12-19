@@ -247,15 +247,15 @@ $(document).ready(function() {
             $(".list-group-item").click(function() {
                 $(".options").empty();
                 $(".snippet").empty();
-                var qid = $(this).attr("id");
-                var final_id = parseInt(qid);
+                var ques_id = $(this).attr("id");
+                var final_id = parseInt(ques_id);
                 k = final_id;
 
                 function SelectQues(k) {
                     $(".list-group-item").click(function() {
                         $(".options").empty();
-                        var qid = $(this).attr("id");
-                        var final_id = parseInt(qid);
+                        var ques_id = $(this).attr("id");
+                        var final_id = parseInt(ques_id);
                         k = final_id;
                         $(".question").text(
                             JSON.parse(data[k]["content_text"]).question
