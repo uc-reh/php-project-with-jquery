@@ -3,10 +3,11 @@ $(document).ready(function() {
 
     var k = 0;
     $.ajax({
-        url: "http://localhost/php-project-with-jquery/question.json",
+        url: "question.json",
         type: "POST",
         success: function(data) {
             var str = JSON.parse(data[0]["content_text"]);
+            var options = (JSON.parse(data[k]["content_text"]).answers).length;
             $(".question").text(str.question);
             $(".options").empty();
 
@@ -18,14 +19,14 @@ $(document).ready(function() {
             }
 
             function printOptions(k) {
-                for (i = 0; i < 4; i++) {
+                for (i = 0; i < options; i++) {
                     $(".options").append(
                         '<div class="form-check"><input type="radio" class="form-check-input" id="radio' +
                         (i + 1) +
                         '" name="optradio" value="' +
                         i +
-                        '"><label class="answer form-check-label d-block" for="' +
-                        JSON.parse(data[k]["content_text"]).answers[i].answer +
+                        '"><label class="answer form-check-label d-block" for="radio' +
+                        (i + 1) +
                         '">' +
                         JSON.parse(data[k]["content_text"]).answers[i].answer +
                         "</label></div>"
@@ -40,6 +41,7 @@ $(document).ready(function() {
                     $(".data").text("" + (k + 1) + " of " + data.length);
                 }
             }
+
             //End Functions
 
             printOptions(k);
@@ -72,7 +74,6 @@ $(document).ready(function() {
                     k = data.length - 1;
                 } else {
                     printQuestions(k);
-                    console.log(k);
                     printOptions(k);
                     printIteration(k);
 
@@ -86,10 +87,8 @@ $(document).ready(function() {
                                 answer: $(this).val(),
                             },
                             function(data) {
-                                console.log(data);
                                 sessionStorage.setItem("result" + k, data);
                                 itemValue = sessionStorage.getItem("result" + k);
-                                console.log(itemValue);
                             }
                         );
                     });
@@ -125,10 +124,8 @@ $(document).ready(function() {
                                 answer: $(this).val(),
                             },
                             function(data) {
-                                console.log(data);
                                 sessionStorage.setItem("result" + k, data);
                                 itemValue = sessionStorage.getItem("result" + k);
-                                console.log(itemValue);
                             }
                         );
                     });
@@ -136,7 +133,6 @@ $(document).ready(function() {
                         sessionStorage.setItem("option" + k, $(this).attr("value"));
                     });
                     itemValue = sessionStorage.getItem("option" + k);
-                    // console.log(itemValue);
                     if (itemValue !== null) {
                         $('input[value="' + itemValue + '"]').click();
                     }
@@ -167,9 +163,8 @@ $(document).ready(function() {
                 var qid = $(this).attr("id");
                 var final_id = parseInt(qid);
                 k = final_id;
-                console.log(k);
 
-                function SelectQues(k) {
+                function selectQues(k) {
                     $(".list-group-item").click(function() {
                         $(".options").empty();
                         var qid = $(this).attr("id");
@@ -191,7 +186,7 @@ $(document).ready(function() {
 
                     });
                 }
-                SelectQues(k);
+                selectQues(k);
 
                 $(".form-check-input").click(function() {
                     $.post(
@@ -200,10 +195,8 @@ $(document).ready(function() {
                             answer: $(this).val(),
                         },
                         function(data) {
-                            console.log(data);
                             sessionStorage.setItem("result" + k, data);
                             itemValue = sessionStorage.getItem("result" + k);
-                            console.log(itemValue);
                         }
                     );
                 });
@@ -240,7 +233,7 @@ $(document).ready(function() {
                         }
 
                     }
-                    SelectQues(snips);
+                    selectQues(snips);
 
                 });
                 $(".ut-b").click(function() {
@@ -263,7 +256,7 @@ $(document).ready(function() {
                             );
                         }
                     }
-                    SelectQues(snips);
+                    selectQues(snips);
 
                 });
                 $(".all-b").click(function() {
@@ -298,7 +291,7 @@ $(document).ready(function() {
                             );
                         }
                     }
-                    SelectQues(snips);
+                    selectQues(snips);
 
                 });
             }); //End of iterating items function
@@ -310,10 +303,8 @@ $(document).ready(function() {
                         answer: $(this).val(),
                     },
                     function(data) {
-                        console.log(data);
                         sessionStorage.setItem("result" + k, data);
                         itemValue = sessionStorage.getItem("result" + k);
-                        console.log(itemValue);
                     }
                 );
             });
@@ -364,11 +355,15 @@ $(document).ready(function() {
         $(".navbar").click(function() {
             $(".list-group").hide();
         });
+        $(".end").click(function() {
+            $(".list-group").hide();
+        });
+        $(".modclose").click(function() {
+            $(".modal").hide();
+        });
     }
 
-    $(".end").click(function() {
-        $(".list-group").hide();
-    });
+
 
     $(".itmlist").click(function() {
         $(".list-group").toggle();
@@ -378,9 +373,7 @@ $(document).ready(function() {
         $(".modal").show();
     });
 
-    $(".modclose").click(function() {
-        $(".modal").hide();
-    });
+
 
     //All Functions
     function listBadgeupdate(k) {

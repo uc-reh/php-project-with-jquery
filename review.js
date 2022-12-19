@@ -2,7 +2,7 @@ $(document).ready(function() {
     //Jquery here...
     var k = 0;
     $.ajax({
-        url: "http://localhost/php-project-with-jquery/question.json",
+        url: "question.json",
         type: "POST",
         success: function(data) {
             var str = JSON.parse(data[0]["content_text"]);
@@ -30,7 +30,6 @@ $(document).ready(function() {
                 sessionStorage.setItem("option0", $(this).attr("value"));
             });
             itemValue = sessionStorage.getItem("option0");
-            //   console.log(itemValue);
             if (itemValue !== null) {
                 $('input[value="' + itemValue + '"]').click();
             }
@@ -50,9 +49,7 @@ $(document).ready(function() {
                 );
             }
             // $('input[value="' + 1 + '"]').addClass('bg-success');
-            console.log(
-                JSON.parse(data[1]["content_text"]).answers[0]["is_correct"]
-            );
+
 
             //function for selecting all correct answers
             function selectCorrect(que_no) {
@@ -85,7 +82,6 @@ $(document).ready(function() {
                     k = data.length - 1;
                 } else {
                     $(".question").text(JSON.parse(data[k]["content_text"]).question);
-                    console.log(k);
                     for (i = 0; i < 4; i++) {
                         $(".options").append(
                             '<div class="form-check"><input type="radio" class="form-check-input" id="radio' +
@@ -115,10 +111,8 @@ $(document).ready(function() {
                                 answer: $(this).val(),
                             },
                             function(data) {
-                                console.log(data);
                                 sessionStorage.setItem("result" + k, data);
                                 itemValue = sessionStorage.getItem("result" + k);
-                                console.log(itemValue);
                             }
                         );
                     });
@@ -178,7 +172,6 @@ $(document).ready(function() {
                         );
                     }
 
-                    console.log(k);
                     if (k <= 8) {
                         $(".data").text("0" + (k + 1) + " of " + data.length);
                     } else {
@@ -194,10 +187,8 @@ $(document).ready(function() {
                                 answer: $(this).val(),
                             },
                             function(data) {
-                                console.log(data);
                                 sessionStorage.setItem("result" + k, data);
                                 itemValue = sessionStorage.getItem("result" + k);
-                                console.log(itemValue);
                             }
                         );
                     });
@@ -205,7 +196,6 @@ $(document).ready(function() {
                         sessionStorage.setItem("option" + k, $(this).attr("value"));
                     });
                     itemValue = sessionStorage.getItem("option" + k);
-                    // console.log(itemValue);
                     if (itemValue !== null) {
                         $('input[value="' + itemValue + '"]').click();
                     }
@@ -245,7 +235,6 @@ $(document).ready(function() {
                     '">unattempted</span></p>'
                 );
 
-                // console.log(optValue);
                 if (optValue !== null) {
                     $(".att" + n)
                         .addClass("text-bg-success")
@@ -261,7 +250,6 @@ $(document).ready(function() {
                 var qid = $(this).attr("id");
                 var final_id = parseInt(qid);
                 k = final_id;
-                console.log(k);
 
                 function SelectQues(k) {
                     $(".list-group-item").click(function() {
@@ -316,10 +304,8 @@ $(document).ready(function() {
                             answer: $(this).val(),
                         },
                         function(data) {
-                            console.log(data);
                             sessionStorage.setItem("result" + k, data);
                             itemValue = sessionStorage.getItem("result" + k);
-                            console.log(itemValue);
                         }
                     );
                 });
@@ -421,10 +407,8 @@ $(document).ready(function() {
                         answer: $(this).val(),
                     },
                     function(data) {
-                        console.log(data);
                         sessionStorage.setItem("result" + k, data);
                         itemValue = sessionStorage.getItem("result" + k);
-                        console.log(itemValue);
                     }
                 );
             });

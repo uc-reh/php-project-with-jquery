@@ -105,11 +105,11 @@ $arr = json_decode($question, true);
          <div class="fixed-bottom bg-light p-3 border border-dark" style="z-index: -1;">
                 <div class="d-flex justify-content-end">
                     <p id="time"></p>
-                    <button class="list-bt btn btn-light border-primary col-1 mx-5">List</button>
-                    <button class="prev btn btn-light border-dark col-1 mx-5">Prev</button>
+                    <button class="list-bt btn btn-light border-primary col-1 mx-4">List</button>
+                    <button class="prev btn btn-light border-dark col-1 mx-4">Prev</button>
                     <p class="data col-1" style="font-family: monospace; margin-left: 24px; padding-top: 12px;"></p>
-                    <button class="next btn btn-light border-dark col-1 mx-5">Next</button>
-                    <button class="end btn btn-light border-dark col-1 mx-5 bg-danger text-light">End Test</button>
+                    <button class="next btn btn-light border-dark col-1 mx-4">Next</button>
+                    <button class="end btn btn-light border-dark col-1 mx-4 bg-danger text-light">End Test</button>
                 </div>
             </div>
         <div class="modal" tabindex="-1" style="z-index:3;">
@@ -122,10 +122,10 @@ $arr = json_decode($question, true);
                     <div class="modal-body">
                         <p>You want to end the test</p>
                         <div class="d-flex justify-content-between">
-                            <button class="btn btn-primary w-25">Total <br><span class="total-item"></span>
+                            <button class="btn border-dark text-primary w-25">Total <br><span class="total-item"></span>
                             </button>
-                            <button class="btn btn-danger w-25">Unattempt <br><span class="unattempt"></span></button>
-                            <button class="btn btn-success w-25">Attempt <br><span class="attempt"></span></button>
+                            <button class="btn border-dark text-danger w-25">Unattempt <br><span class="unattempt"></span></button>
+                            <button class="btn border-dark text-success w-25">Attempt <br><span class="attempt"></span></button>
                             
                         </div>
                     </div>
