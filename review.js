@@ -55,7 +55,7 @@ $(document).ready(function() {
 
             //function for selecting all correct answers
             function selectCorrect(que_no) {
-                for (ans_no = 0; ans_no < 3; ans_no++) {
+                for (ans_no = 0; ans_no < options; ans_no++) {
                     if (
                         JSON.parse(data[que_no]["content_text"]).answers[ans_no][
                             "is_correct"
@@ -84,7 +84,7 @@ $(document).ready(function() {
                     k = data.length - 1;
                 } else {
                     $(".question").text(JSON.parse(data[k]["content_text"]).question);
-                    for (i = 0; i < 4; i++) {
+                    for (i = 0; i < options; i++) {
                         $(".options").append(
                             '<div class="form-check"><input type="radio" class="form-check-input" id="radio' +
                             (i + 1) +
@@ -163,7 +163,7 @@ $(document).ready(function() {
                 } else {
                     $(".question").text(JSON.parse(data[k]["content_text"]).question);
 
-                    for (i = 0; i < 4; i++) {
+                    for (i = 0; i < options; i++) {
                         $(".options").append(
                             '<div class="form-check"><input type="radio" class="form-check-input" id="radio' +
                             (i + 1) +
@@ -276,7 +276,7 @@ $(document).ready(function() {
                         } else {
                             $(".data").text("" + (k + 1) + " of " + data.length);
                         }
-                        for (i = 0; i < 4; i++) {
+                        for (i = 0; i < options; i++) {
                             $(".options").append(
                                 '<div class="form-check"><input type="radio" class="form-check-input" id="radio' +
                                 (i + 1) +
@@ -301,9 +301,21 @@ $(document).ready(function() {
                                 $(".prev").prop("disabled", true);
                             }
                         }
+                        if (itemValue !== null) {
+                            $('input[value="' + itemValue + '"]').click();
+                            $('input[value="' + itemValue + '"]').addClass(
+                                "bg-danger"
+                            );
+                        }
+                        $(".form-check-input").attr("disabled", "true");
+
                     });
                 }
                 SelectQues(k);
+                selectCorrect(k);
+
+
+
 
                 $(".form-check-input").click(function() {
                     $.post(
@@ -350,6 +362,8 @@ $(document).ready(function() {
                         }
                     }
                     SelectQues(snips);
+                    selectCorrect(k);
+
                 });
                 $(".ut-b").click(function() {
                     $(".snip").empty();
@@ -372,6 +386,8 @@ $(document).ready(function() {
                         }
                     }
                     SelectQues(snips);
+                    selectCorrect(k);
+
                 });
                 $(".all-b").click(function() {
                     $(".snip").empty();
@@ -405,7 +421,11 @@ $(document).ready(function() {
                             );
                         }
                     }
+
                     SelectQues(snips);
+                    selectCorrect(k);
+
+
                 });
             }); //End of iterating items function
 
