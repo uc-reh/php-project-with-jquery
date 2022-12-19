@@ -6,13 +6,14 @@ $(document).ready(function() {
         type: "POST",
         success: function(data) {
             var str = JSON.parse(data[0]["content_text"]);
+            var options = (JSON.parse(data[0]["content_text"]).answers).length;
 
             $(".question").text(str.question);
             $(".snippet").append(str.explanation);
 
             $(".options").empty();
 
-            for (i = 0; i < 4; i++) {
+            for (i = 0; i < options; i++) {
                 $(".options").append(
                     '<div class="form-check"><input type="radio" class="form-check-input" id="radio' +
                     (i + 1) +
@@ -32,6 +33,7 @@ $(document).ready(function() {
             itemValue = sessionStorage.getItem("option0");
             if (itemValue !== null) {
                 $('input[value="' + itemValue + '"]').click();
+                $('input[value="' + itemValue + '"]').addClass('bg-danger');
             }
             $(".form-check-input").attr("disabled", "true");
 
@@ -123,6 +125,9 @@ $(document).ready(function() {
                     itemValue = sessionStorage.getItem("option" + k);
                     if (itemValue !== null) {
                         $('input[value="' + itemValue + '"]').click();
+                        $('input[value="' + itemValue + '"]').addClass(
+                            "bg-danger"
+                        );
                     }
                     $(".form-check-input").attr("disabled", "true");
 
@@ -198,6 +203,9 @@ $(document).ready(function() {
                     itemValue = sessionStorage.getItem("option" + k);
                     if (itemValue !== null) {
                         $('input[value="' + itemValue + '"]').click();
+                        $('input[value="' + itemValue + '"]').addClass(
+                            "bg-danger"
+                        );
                     }
                     $(".form-check-input").attr("disabled", "true");
                     if (sessionStorage.getItem("result" + k) == 1) {
@@ -315,6 +323,7 @@ $(document).ready(function() {
                 itemValue = sessionStorage.getItem("option" + k);
                 if (itemValue !== null) {
                     $('input[value="' + itemValue + '"]').click();
+                    $('input[value="' + itemValue + '"]').addClass("bg-danger");
                 }
 
                 $(".at-b").click(function() {
